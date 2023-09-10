@@ -1,4 +1,4 @@
-import { Code, Text, VStack } from "@chakra-ui/react";
+import { Code, StackDivider, Text, VStack } from "@chakra-ui/react";
 import { FC } from "react";
 import { Task } from "../Task";
 import { Book } from "./Book";
@@ -26,7 +26,11 @@ export const Task1: FC = () => {
         </>
       }
       showcase={
-        <VStack>
+        <VStack
+          divider={<StackDivider borderColor='gray.300' />}
+          spacing={4}
+          align='stretch'
+        >
           <Book
             title="Moby-Dick"
             author="Herman Melville"
