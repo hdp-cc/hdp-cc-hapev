@@ -1,16 +1,29 @@
-import { Alert, AlertIcon } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { FC } from "react";
-import { Book } from "../books";
+import { Book as BookType } from "../books";
+import { Book } from "../1/Book";
 
-type Props = {
-  books: Book[];
+type BookListProps = {
+  books: BookType[];
 };
 
-export const BookList: FC<Props> = () => {
+const createKey = (book: BookType) => encodeURIComponent(`${book.title}-${book.author}-${book.year}-${book.language}`).replace(/(%20)|%/g, '');
+
+const sortArrayByObjectProperty = (array: BookType[], property: keyof BookType) => {
+  return [...array].sort((a, b) => {
+    if (a[property] < b[property]) {
+      return -1;
+    }
+    if (a[property] > b[property]) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+export const BookList: FC<BookListProps> = ({ books }: BookListProps) => {
+  const sortedBooks = sortArrayByObjectProperty(books, 'title');
   return (
-    <Alert status="warning">
-      <AlertIcon />
-      Das ist nur ein Platzhalter - hier gehört deine Implementierung hin!
-    </Alert>
+    sortedBooks.map((book) => <Book key={`${createKey(book)}`} {...book} />)
   );
 };
