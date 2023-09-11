@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import { FC } from "react";
 import { Book as BookType } from "../books";
 import { Book } from "../1/Book";
@@ -11,9 +10,13 @@ const createKey = (book: BookType) => encodeURIComponent(`${book.title}-${book.a
 
 const sortArrayByObjectProperty = (array: BookType[], property: keyof BookType) => {
   return [...array].sort((a, b) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     if (a[property] < b[property]) {
       return -1;
     }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     if (a[property] > b[property]) {
       return 1;
     }
