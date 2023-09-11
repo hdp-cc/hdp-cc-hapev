@@ -1,8 +1,9 @@
 export type Book = {
   title: string;
   author: string;
-  language: string;
+  language?: string;
   year: number;
+  [key: string]: string | number | undefined;
 };
 
 export const books: Book[] = [
