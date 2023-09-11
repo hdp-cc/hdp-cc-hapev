@@ -1,4 +1,4 @@
-import { Code, Text, VStack } from "@chakra-ui/react";
+import { Code, StackDivider, Text, VStack } from "@chakra-ui/react";
 import { FC } from "react";
 import { Task } from "../Task";
 import { books } from "../books";
@@ -39,7 +39,11 @@ export const Task3: FC = () => {
         </>
       }
       showcase={
-        <VStack>
+        <VStack
+          divider={<StackDivider borderColor='gray.300' />}
+          spacing={4}
+          align='stretch'
+        >
           <BookManager initialBooks={books} />
         </VStack>
       }

@@ -27,7 +27,7 @@ const featureIcons: Record<keyof BookProps, IconType> = {
 
 type BookFeatureProps = {
   type: keyof BookProps;
-  value: string | number;
+  value: string | number | undefined;
 };
 
 
